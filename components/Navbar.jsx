@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <header className="fixed px-6 lg:px-24 z-50 w-full flex items-center justify-between py-[3%] md:py-[2%]">
       <a
-        className="transition text-zinc-800 z-30 text-2xl md:text-4xl font-semibold hover:opacity-80"
+        className="transition w-fit text-zinc-800 z-30 text-2xl md:text-4xl font-semibold hover:opacity-80"
         href={"/"}
       >
         <img
@@ -34,7 +34,7 @@ const Navbar = () => {
           onClick={() => setActiveNav(!activeNav)}
           className="md:hidden text-[#f6f6f6] flex items-center cursor-pointer justify-center hover:opacity-80 transition bg-blur rounded-full h-14 z-30 w-14"
         >
-          <RiMenu3Line size={40} />
+          <RiMenu3Line size={25} />
         </button>
         {/* {user && (
           <div
