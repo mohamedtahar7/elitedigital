@@ -55,6 +55,9 @@ export default function ReviewSlider({ reviews }: { reviews: any[] }) {
             ))}
           </motion.div>
         </AnimatePresence>
+        {slides.length === 0 && (
+          <h4 className="font-medium">There's no reviews</h4>
+        )}
       </div>
 
       {/* Navigation controls (still optional) */}
