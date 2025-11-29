@@ -28,7 +28,7 @@ export const offers = [
     ],
   },
   {
-    title: "E-Commerce Website Plan",
+    title: "Custom Website Plan",
     price: "",
     whatfor:
       "For businesses that need more than a website. We build custom web apps tailored to your goals.",
