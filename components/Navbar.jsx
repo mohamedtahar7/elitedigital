@@ -13,7 +13,7 @@ const Navbar = () => {
       >
         <img
           className="w-1/3"
-          src={"https://i.postimg.cc/x844dNXN/website-logo.png"}
+          src={"https://i.postimg.cc/B6Hr1WGp/social-logo-removebg-preview.png"}
         />
       </a>
       <nav className="md:block z-30 bg-blur py-1 px-1 rounded-xl hidden text-[#f9fafb]">

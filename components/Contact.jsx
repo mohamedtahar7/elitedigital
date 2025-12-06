@@ -25,7 +25,7 @@ const Contact = () => {
       initial={{ y: -50, opacity: 0 }}
       transition={{ duration: 0.5 }}
       id="contact"
-      className="py-12 mx-4 sm:mx-10 md:mx-20 lg:mx-28 mb-8 rounded-3xl shadow-2xl bg-[#003347] px-6 sm:px-10 lg:px-12"
+      className="py-12 mx-4 sm:mx-10 md:mx-20 lg:mx-28 mb-8 rounded-3xl shadow-2xl bg-[#1a3d63] px-6 sm:px-10 lg:px-12"
     >
       <div className="flex flex-col gap-2">
         <h1 className="text-2xl sm:text-3xl font-light text-zinc-50">
@@ -70,7 +70,7 @@ const Contact = () => {
 
         <button
           type="submit"
-          className="bg-zinc-100 py-3 text-[#003347] font-medium rounded-lg hover:opacity-80 transition cursor-pointer"
+          className="bg-zinc-100 py-3 text-[#1a1a1a] font-medium rounded-lg hover:opacity-80 transition cursor-pointer"
         >
           {loading ? "Sending..." : "Send Message"}
         </button>

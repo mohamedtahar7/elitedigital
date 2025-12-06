@@ -49,14 +49,14 @@ export default function ReviewSlider({ reviews }: { reviews: any[] }) {
                 key={i}
                 className="p-4 rounded-xl border border-zinc-300 bg-white"
               >
-                <h4 className="font-medium">{r.name}</h4>
+                <h4 className="font-medium text-[#1a1a1a]">{r.name}</h4>
                 <p className="text-zinc-600">{r.content}</p>
               </div>
             ))}
           </motion.div>
         </AnimatePresence>
         {slides.length === 0 && (
-          <h4 className="font-medium">There's no reviews</h4>
+          <h4 className="font-medium text-[#1a1a1a]">There's no reviews</h4>
         )}
       </div>
 

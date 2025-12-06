@@ -40,7 +40,7 @@ const Reviews = () => {
             whileInView={{ y: 0, opacity: 100 }}
             initial={{ y: -50, opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-2xl sm:text-3xl font-light uppercase mb-6"
+            className="text-2xl sm:text-3xl text-[#1a1a1a] font-light uppercase mb-6"
           >
             Our Clients Testimonials
           </motion.h2>
@@ -63,7 +63,7 @@ const Reviews = () => {
               e.preventDefault();
               addReview();
             }}
-            className="flex flex-col w-full md:w-[85%] gap-4 p-6 rounded-3xl bg-[#003347]"
+            className="flex flex-col w-full md:w-[85%] gap-4 p-6 rounded-3xl bg-[#1a3d63]"
           >
             <h4 className="text-lg sm:text-xl font-light text-zinc-50">
               Add a Review
@@ -87,7 +87,7 @@ const Reviews = () => {
 
             <button
               type="submit"
-              className="bg-zinc-100 py-3 rounded-lg hover:opacity-80 transition cursor-pointer"
+              className="bg-zinc-100 py-3 text-[#1a1a1a] rounded-lg hover:opacity-80 transition cursor-pointer"
             >
               {loading ? "...." : "Add Review"}
             </button>
