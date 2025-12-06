@@ -20,12 +20,12 @@ const OfferCard = ({ offer, id }) => {
         <h4 className="text-3xl sm:text-4xl font-semibold">
           {offer.price === "" ? "Custom" : `${offer.price} DZD`}
         </h4>
-        <Link
+        <a
           href="#contact"
           className="w-full text-center py-3 text-white bg-[#1a3d63] rounded-xl hover:opacity-90 transition"
         >
           Order Now
-        </Link>
+        </a>
       </div>
 
       <div className="mt-4 flex flex-col gap-2">
