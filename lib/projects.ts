@@ -18,7 +18,7 @@ export const projects = [
     img: "https://i.postimg.cc/yd6rm7s6/aicraftedmedia.png",
     name: "AiCraftedMedia 🤖🦾",
     description: "Take your YouTube Channel to the next level with AI Editing.",
-    link: "https://aicraftedmedia.com",
+    link: "https://aicraftedmedia.netlify.app/",
     category: "Landing Pages",
   },
   {
