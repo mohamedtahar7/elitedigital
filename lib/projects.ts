@@ -1,11 +1,11 @@
 export const projects = [
   {
-    img: "https://i.postimg.cc/fRrJMNYz/omnifood2.png",
-    name: "Omnifood 🍔🥗",
+    img: "https://i.postimg.cc/CLP1wNdV/Screenshot-2026-01-29-204206.png",
+    name: "Authentic 👔🧢",
     description:
-      "Eat healthy food. Tailored to your personal tastes and nutritional needs.",
-    link: "https://omnifood-mohamed-tahar.netlify.app/",
-    category: "Landing Pages",
+      "Premium essentials designed for comfort, durability, and timeless style. Crafted to fit your style.",
+    link: "https://authentic-store.vercel.app/",
+    category: "Ecommerce Websites",
   },
   {
     img: "https://i.postimg.cc/QM3zMpzT/metaversus.png",
