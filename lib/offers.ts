@@ -15,7 +15,7 @@ export const offers = [
   },
   {
     title: "E-Commerce Website Plan",
-    price: "42000.00",
+    price: "35000.00",
     whatfor:
       "Perfect for stores that want to sell online. With fast e-com websites tailored to your products and customers.",
     benefits: [
