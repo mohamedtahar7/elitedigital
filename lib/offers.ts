@@ -1,7 +1,7 @@
 export const offers = [
   {
     title: "Starter Website Plan",
-    price: "25000.00",
+    price: "28000.00",
     whatfor:
       "Ideal for startups or small businesses that need a clean, modern website to establish their online presence.",
     benefits: [
