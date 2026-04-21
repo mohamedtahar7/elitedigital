@@ -26,7 +26,7 @@ const Card = ({ project, initial }) => {
           href={link}
           target="_blank"
         >
-          Live Demo <Link className="w-5 h-5" />
+          Visit Website <Link className="w-5 h-5" />
         </a>
       </div>
     </motion.div>
