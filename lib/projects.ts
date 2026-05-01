@@ -8,13 +8,13 @@ export const projects = [
     category: "Ecommerce Websites",
   },
   {
-    img: "https://i.postimg.cc/fRrJMNYz/omnifood2.png",
-    name: "Omnifood 🍔🥗",
-    description:
-      "Eat healthy food. Tailored to your personal tastes and nutritional needs.",
-    link: "https://omnifood-mohamed-tahar.netlify.app/",
-    category: "Landing Pages",
-  },
+  img: "https://i.postimg.cc/sfYczZY1/sd.png", // Replace with your actual screenshot link
+  name: "Gosto 🌶️🍔",
+  description:
+    "Premium Algerian fusion food delivery in Biskra. Featuring a sleek dark UI, custom cart logic, and local payment flow.",
+  link: "https://gosto-dz.vercel.app/",
+  category: "Full-stack Web Apps",
+},
   {
     img: "https://i.postimg.cc/QM3zMpzT/metaversus.png",
     name: "MetaVersus 🌌🥽",
