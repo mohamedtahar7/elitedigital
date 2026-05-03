@@ -8,7 +8,7 @@ export const connectDB = async () => {
       family: 4, // Forces the driver to use IPv4
     });
     console.log("MongoDB Connected...");
-  } catch (err) {
+  } catch (err: any) {
     console.error(err.message);
     process.exit(1);
   }
