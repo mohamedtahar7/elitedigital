@@ -1,5 +1,13 @@
 export const projects = [
   {
+    img: "https://i.postimg.cc/CLB5FPXG/Capture.png", // Update with your site's hero screenshot
+    name: "Coffee Time ☕✨",
+    description:
+      "A premium artisanal coffee experience featuring high-end motion design, dynamic cart state management, and a refined minimal aesthetic.",
+    link: "https://coffeetimedz.vercel.app/", // Replace with your actual Vercel deployment link
+    category: "Full-stack Web Apps",
+  },
+  {
     img: "https://i.postimg.cc/CLP1wNdV/Screenshot-2026-01-29-204206.png",
     name: "Authentic 👔🧢",
     description:
@@ -8,13 +16,13 @@ export const projects = [
     category: "Ecommerce Websites",
   },
   {
-  img: "https://i.postimg.cc/sfYczZY1/sd.png", // Replace with your actual screenshot link
-  name: "Gosto 🌶️🍔",
-  description:
-    "Premium Algerian fusion food delivery in Biskra. Featuring a sleek dark UI, custom cart logic, and local payment flow.",
-  link: "https://gosto-dz.vercel.app/",
-  category: "Full-stack Web Apps",
-},
+    img: "https://i.postimg.cc/sfYczZY1/sd.png", // Replace with your actual screenshot link
+    name: "Gosto 🌶️🍔",
+    description:
+      "Premium Algerian fusion food delivery in Biskra. Featuring a sleek dark UI, custom cart logic, and local payment flow.",
+    link: "https://gosto-dz.vercel.app/",
+    category: "Full-stack Web Apps",
+  },
   {
     img: "https://i.postimg.cc/QM3zMpzT/metaversus.png",
     name: "MetaVersus 🌌🥽",
