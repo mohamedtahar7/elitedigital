@@ -10,8 +10,6 @@ export default function ReviewSlider({ reviews }) {
   const [index, setIndex] = useState(0);
   const reviewsList = Array.isArray(reviews) ? reviews : [];
 
-  // Group into single-card slides for better focus on mobile,
-  // or stay with 2 on desktop. Let's optimize for 2.
   const slides = [];
   for (let i = 0; i < reviewsList.length; i += 2) {
     slides.push(reviewsList.slice(i, i + 2));
@@ -38,7 +36,7 @@ export default function ReviewSlider({ reviews }) {
 
   return (
     <div className="relative w-full">
-      {/* Navigation - Top Right Alignment */}
+      {/* Navigation */}
       <div className="flex justify-end gap-3 mb-8">
         <button
           onClick={prevSlide}
@@ -67,7 +65,8 @@ export default function ReviewSlider({ reviews }) {
             {slides[index]?.map((r, i) => (
               <div
                 key={i}
-                className="relative p-10 rounded-[2.5rem] bg-white border border-zinc-100 hover:border-[#1a3d63]/20 transition-all group"
+                /* Added 'flex flex-col' to the card container */
+                className="relative p-10 rounded-[2.5rem] bg-white border border-zinc-100 hover:border-[#1a3d63]/20 transition-all group flex flex-col min-h-[320px]"
               >
                 <RiDoubleQuotesL className="text-[#1a3d63]/5 text-6xl absolute top-6 right-8 group-hover:text-[#1a3d63]/10 transition-colors" />
 
@@ -77,11 +76,13 @@ export default function ReviewSlider({ reviews }) {
                   ))}
                 </div>
 
+                {/* The message container */}
                 <p className="text-zinc-600 text-sm leading-[1.8] mb-10 font-light italic">
                   &ldquo;{r.content}&rdquo;
                 </p>
 
-                <div className="flex items-center gap-4 border-t border-zinc-50 pt-6">
+                {/* 'mt-auto' forces this div to the bottom of the flex-col container */}
+                <div className="flex items-center gap-4 border-t border-zinc-50 pt-6 mt-auto">
                   <div className="w-11 h-11 rounded-full bg-[#1a3d63] flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-[#1a3d63]/20">
                     {r.name.charAt(0)}
                   </div>
@@ -100,7 +101,7 @@ export default function ReviewSlider({ reviews }) {
         </AnimatePresence>
       </div>
 
-      {/* Modern Progress Dots */}
+      {/* Progress Dots */}
       <div className="flex justify-start gap-3 mt-12">
         {slides.map((_, i) => (
           <button
