@@ -2,97 +2,94 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { RiDoubleQuotesL } from "react-icons/ri";
 import { HiStar } from "react-icons/hi";
+
 export default function ReviewSlider({ reviews }) {
   const [index, setIndex] = useState(0);
-
-  // Group reviews into chunks of 2
-  const slides = [];
   const reviewsList = Array.isArray(reviews) ? reviews : [];
+
+  // Group into single-card slides for better focus on mobile,
+  // or stay with 2 on desktop. Let's optimize for 2.
+  const slides = [];
   for (let i = 0; i < reviewsList.length; i += 2) {
     slides.push(reviewsList.slice(i, i + 2));
   }
 
-  const nextSlide = () => {
-    setIndex((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
+  const nextSlide = () => setIndex((prev) => (prev + 1) % slides.length);
+  const prevSlide = () =>
     setIndex((prev) => (prev - 1 + slides.length) % slides.length);
-  };
 
-  // Auto slide every 5 seconds (2s is a bit fast for reading text)
   useEffect(() => {
     if (slides.length <= 1) return;
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000);
+    const interval = setInterval(nextSlide, 6000);
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  return (
-    <div
-      className="relative w-full max-w-6xl mx-auto py-12"
-      style={{ backgroundColor: "#fffefe", fontFamily: "'Lexend', sans-serif" }}
-    >
-      {/* Navigation Buttons - Positioned on sides for a modern feel */}
-      {slides.length > 1 && (
-        <div className="absolute top-1/2 -translate-y-1/2 -left-4 -right-4 flex justify-between z-10 pointer-events-none">
-          <button
-            onClick={prevSlide}
-            className="p-3 rounded-full bg-white shadow-lg border border-zinc-100 text-zinc-900 pointer-events-auto hover:bg-zinc-900 hover:text-white transition-all active:scale-90"
-          >
-            <FiChevronLeft size={20} />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="p-3 rounded-full bg-white shadow-lg border border-zinc-100 text-zinc-900 pointer-events-auto hover:bg-zinc-900 hover:text-white transition-all active:scale-90"
-          >
-            <FiChevronRight size={20} />
-          </button>
-        </div>
-      )}
+  if (slides.length === 0)
+    return (
+      <div className="py-20 border-2 border-dashed border-zinc-100 rounded-[3rem] flex items-center justify-center">
+        <p className="text-zinc-400 italic font-light">
+          Be the first to leave a review.
+        </p>
+      </div>
+    );
 
-      <div className="overflow-hidden relative px-2">
+  return (
+    <div className="relative w-full">
+      {/* Navigation - Top Right Alignment */}
+      <div className="flex justify-end gap-3 mb-8">
+        <button
+          onClick={prevSlide}
+          className="p-4 rounded-2xl bg-zinc-50 text-[#1a3d63] hover:bg-[#1a3d63] hover:text-white transition-all"
+        >
+          <FiArrowLeft size={18} />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="p-4 rounded-2xl bg-zinc-50 text-[#1a3d63] hover:bg-[#1a3d63] hover:text-white transition-all"
+        >
+          <FiArrowRight size={18} />
+        </button>
+      </div>
+
+      <div className="overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
             {slides[index]?.map((r, i) => (
               <div
                 key={i}
-                className="relative p-8 rounded-3xl border border-zinc-100 bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="relative p-10 rounded-[2.5rem] bg-white border border-zinc-100 hover:border-[#1a3d63]/20 transition-all group"
               >
-                {/* Visual Flair: Quote Icon */}
-                <RiDoubleQuotesL className="text-[#C19A6B]/20 text-5xl absolute top-6 right-8" />
+                <RiDoubleQuotesL className="text-[#1a3d63]/5 text-6xl absolute top-6 right-8 group-hover:text-[#1a3d63]/10 transition-colors" />
 
-                {/* Visual Flair: Stars */}
-                <div className="flex gap-1 mb-4">
+                <div className="flex gap-1 mb-6">
                   {[...Array(5)].map((_, starIdx) => (
-                    <HiStar key={starIdx} className="text-[#C19A6B] text-lg" />
+                    <HiStar key={starIdx} className="text-[#1a3d63] text-sm" />
                   ))}
                 </div>
 
-                <p className="text-zinc-600 text-base leading-relaxed mb-6 italic relative z-10">
-                  &quot;{r.content}&quot;
+                <p className="text-zinc-600 text-sm leading-[1.8] mb-10 font-light italic">
+                  &ldquo;{r.content}&rdquo;
                 </p>
 
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-white font-bold text-xs">
+                <div className="flex items-center gap-4 border-t border-zinc-50 pt-6">
+                  <div className="w-11 h-11 rounded-full bg-[#1a3d63] flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-[#1a3d63]/20">
                     {r.name.charAt(0)}
                   </div>
                   <div>
-                    <h4 className="font-semibold text-zinc-900 text-sm tracking-tight">
+                    <h4 className="font-bold text-zinc-900 text-sm tracking-tight">
                       {r.name}
                     </h4>
-                    <p className="text-[10px] text-[#C19A6B] uppercase tracking-widest font-bold">
+                    <p className="text-[10px] text-zinc-400 uppercase tracking-[0.2em] font-black">
                       Verified Client
                     </p>
                   </div>
@@ -101,30 +98,20 @@ export default function ReviewSlider({ reviews }) {
             ))}
           </motion.div>
         </AnimatePresence>
-
-        {slides.length === 0 && (
-          <div className="text-center py-20">
-            <h4 className="font-light text-zinc-400 italic">
-              No reviews shared yet.
-            </h4>
-          </div>
-        )}
       </div>
 
-      {/* Pagination Dots */}
-      {slides.length > 1 && (
-        <div className="flex justify-center gap-2 mt-10">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setIndex(i)}
-              className={`h-1.5 transition-all duration-300 rounded-full ${
-                index === i ? "w-8 bg-[#C19A6B]" : "w-2 bg-zinc-200"
-              }`}
-            />
-          ))}
-        </div>
-      )}
+      {/* Modern Progress Dots */}
+      <div className="flex justify-start gap-3 mt-12">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i)}
+            className={`h-1.5 rounded-full transition-all duration-500 ${
+              index === i ? "w-12 bg-[#1a3d63]" : "w-3 bg-zinc-200"
+            }`}
+          />
+        ))}
+      </div>
     </div>
   );
 }

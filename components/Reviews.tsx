@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Toaster, toast } from "sonner";
 import ReviewSlider from "./ui/ReviewSlider";
 import { motion } from "framer-motion";
+
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [name, setName] = useState("");
@@ -20,9 +21,11 @@ const Reviews = () => {
   }, []);
 
   const addReview = async () => {
+    if (!name || !content) return toast.error("Please fill all fields");
     setLoading(true);
     await createReview(name, content);
     toast.success("Review Added!");
+    fetchReviews(); // Refresh list
     setLoading(false);
     setName("");
     setContent("");
@@ -31,71 +34,101 @@ const Reviews = () => {
   return (
     <section
       id="reviews"
-      className="py-12 mx-4 sm:mx-10 md:mx-20 lg:mx-24 px-4 sm:px-8 lg:px-12"
+      className="py-32 bg-[#fefffe]"
+      style={{ fontFamily: "'Lexend', sans-serif" }}
     >
-      <div className="flex flex-col md:flex-row gap-10">
-        {/* LEFT — Reviews */}
-        <div className="md:w-1/2 w-full">
-          <motion.h2
-            whileInView={{ y: 0, opacity: 100 }}
-            initial={{ y: -50, opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-2xl sm:text-3xl text-[#1a1a1a] font-light uppercase mb-6"
-          >
-            Our Clients Testimonials
-          </motion.h2>
-
-          <ReviewSlider reviews={reviews} />
-
-          {/* Later, if you want static list under slider */}
-          <div className="flex flex-col gap-4 mt-4"></div>
-        </div>
-
-        {/* RIGHT — Add Review Form */}
-        <motion.div
-          whileInView={{ x: 0, opacity: 100 }}
-          initial={{ x: 50, opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="md:w-1/2 w-full flex md:justify-end justify-center"
-        >
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              addReview();
-            }}
-            className="flex flex-col w-full md:w-[85%] gap-4 p-6 rounded-3xl bg-[#1a3d63]"
-          >
-            <h4 className="text-lg sm:text-xl font-light text-zinc-50">
-              Add a Review
-            </h4>
-
-            <input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="rounded-lg border w-full h-12 bg-zinc-200 px-3 placeholder-zinc-400 border-zinc-100"
-              type="text"
-              placeholder="Name"
-            />
-
-            <input
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              className="rounded-lg border w-full h-12 bg-zinc-200 px-3 placeholder-zinc-400 border-zinc-100"
-              type="text"
-              placeholder="Your Review"
-            />
-
-            <button
-              type="submit"
-              className="bg-zinc-100 py-3 text-[#1a1a1a] rounded-lg hover:opacity-80 transition cursor-pointer"
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex flex-col lg:flex-row gap-20 items-start">
+          {/* LEFT — Testimonials Display */}
+          <div className="w-full lg:w-3/5">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="mb-12"
             >
-              {loading ? "...." : "Add Review"}
-            </button>
-          </form>
-        </motion.div>
-      </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-zinc-900 tracking-tight mb-4">
+                What our{" "}
+                <span className="text-[#1a3d63] italic font-serif">
+                  Partners
+                </span>{" "}
+                say.
+              </h2>
+              <div className="h-1.5 w-12 bg-[#1a3d63] rounded-full" />
+            </motion.div>
 
-      <Toaster richColors />
+            <ReviewSlider reviews={reviews} />
+          </div>
+
+          {/* RIGHT — The Action Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="w-full lg:w-2/5"
+          >
+            <div className="p-10 rounded-[3rem] bg-[#1a3d63] text-white shadow-2xl shadow-[#1a3d63]/20 relative overflow-hidden group">
+              {/* Decorative Circle */}
+              <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-colors" />
+
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold mb-2">
+                  Share your experience
+                </h3>
+                <p className="text-white/60 text-sm font-light mb-8">
+                  Your feedback helps us engineer better solutions.
+                </p>
+
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    addReview();
+                  }}
+                  className="space-y-4"
+                >
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-2">
+                      Your Name
+                    </label>
+                    <input
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full h-14 bg-white/10 border border-white/10 rounded-2xl px-5 text-sm focus:outline-none focus:border-white/40 transition-all placeholder:text-white/20"
+                      type="text"
+                      placeholder="e.g. Salim Ahmed"
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-2">
+                      Message
+                    </label>
+                    <textarea
+                      value={content}
+                      onChange={(e) => setContent(e.target.value)}
+                      className="w-full h-32 bg-white/10 border border-white/10 rounded-2xl px-5 py-4 text-sm focus:outline-none focus:border-white/40 transition-all placeholder:text-white/20 resize-none"
+                      placeholder="How was your experience working with Elite Digital?"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full bg-white text-[#1a3d63] h-14 rounded-2xl font-bold text-sm hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                  >
+                    {loading ? (
+                      <div className="w-5 h-5 border-2 border-[#1a3d63]/30 border-t-[#1a3d63] animate-spin rounded-full" />
+                    ) : (
+                      "Submit Review"
+                    )}
+                  </button>
+                </form>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+      <Toaster richColors position="bottom-right" />
     </section>
   );
 };
