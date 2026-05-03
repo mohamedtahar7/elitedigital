@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { RiDoubleQuotesL } from "react-icons/ri";
 import { HiStar } from "react-icons/hi";
-
 export default function ReviewSlider({ reviews }) {
   const [index, setIndex] = useState(0);
 
