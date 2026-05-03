@@ -12,7 +12,7 @@ const Projects = () => {
   const categories = [
     "All",
     "Full-stack Web Apps",
-    "Websites",
+    "Ecommerce Websites",
     "Landing Pages",
   ];
   const projectsList = Array.isArray(projects) ? projects : [];

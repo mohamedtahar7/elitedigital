@@ -1,25 +1,33 @@
+"use client";
+
 import React from "react";
+import { FiInstagram } from "react-icons/fi";
 
 const Footer = () => {
-  const year = new Date().getFullYear();
-
   return (
-    <footer className="w-full mt-4 flex sm:flex-row flex-col items-center gap-3 justify-between sm:px-24 px-6 pb-8 -mb-12">
-      <div className="flex items-center gap-4">
-        <h1 className="transition cursor-pointer hover:opacity-60 text-[0.75rem] opacity-70 uppercase">
-          &copy;{year} Elite Digital
-        </h1>
-        <h1 className="transition cursor-pointer hover:opacity-60 text-[0.75rem] opacity-70 uppercase">
-          All Rights Reserved
-        </h1>
-      </div>
-      <div className="flex items-center gap-4">
-        <a
-          href={"/"}
-          className="transition hover:opacity-60 text-[0.75rem] opacity-70 uppercase"
-        >
-          Contact
-        </a>
+    <footer className="py-6 border-t border-zinc-100 bg-[#fefffe] text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+        {/* Line 1: Branding & Copyright */}
+        <div className="flex items-center gap-2">
+          <span className="text-zinc-900 uppercase font-bold tracking-tight lowercase text-sm">
+            elite<span className="text-[#1a3d63]">digital</span>
+          </span>
+          <span className="opacity-40">/</span>
+          <span>© {new Date().getFullYear()}</span>
+        </div>
+
+        {/* Line 2: Social & Location */}
+        <div className="flex items-center gap-6">
+          <a
+            href="https://www.instagram.com/elitedigital.dz/"
+            target="_blank"
+            className="flex items-center gap-1.5 hover:text-[#1a3d63] transition-colors"
+          >
+            <FiInstagram size={14} /> instagram
+          </a>
+          <span className="hidden sm:block opacity-20">|</span>
+          <span className="opacity-60">Biskra, DZ</span>
+        </div>
       </div>
     </footer>
   );
