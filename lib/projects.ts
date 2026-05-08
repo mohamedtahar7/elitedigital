@@ -1,6 +1,6 @@
 export const projects = [
   {
-    img: "https://i.postimg.cc/your-aura-screenshot.png", // Update this once you deploy
+    img: "https://i.postimg.cc/rFpv8wMk/Capture-aura.png", // Update this once you deploy
     name: "AURA Performance ⚡⚽",
     description:
       "An elite athletic performance interface engineered for the relentless. Features advanced Framer Motion choreography, high-tensile typography, and a refined minimal aesthetic for the modern athlete.",
