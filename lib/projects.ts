@@ -1,5 +1,13 @@
 export const projects = [
   {
+    img: "https://i.postimg.cc/your-aura-screenshot.png", // Update this once you deploy
+    name: "AURA Performance ⚡⚽",
+    description:
+      "An elite athletic performance interface engineered for the relentless. Features advanced Framer Motion choreography, high-tensile typography, and a refined minimal aesthetic for the modern athlete.",
+    link: "https://aura-performance.vercel.app/", // Replace with your actual deployment
+    category: "E-commerce Websites",
+  },
+  {
     img: "https://i.postimg.cc/CLB5FPXG/Capture.png", // Update with your site's hero screenshot
     name: "Coffee Time ☕✨",
     description:
