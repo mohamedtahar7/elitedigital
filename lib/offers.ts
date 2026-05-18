@@ -1,7 +1,7 @@
 export const offers = [
   {
     title: "Starter Website Plan",
-    price: "28000.00",
+    price: "18900.00",
     whatfor:
       "Ideal for startups or small businesses that need a clean, modern website to establish their online presence.",
     benefits: [
@@ -15,7 +15,7 @@ export const offers = [
   },
   {
     title: "E-Commerce Website Plan",
-    price: "35000.00",
+    price: "27900.00",
     whatfor:
       "Perfect for stores that want to sell online. With fast e-com websites tailored to your products and customers.",
     benefits: [
