@@ -39,7 +39,7 @@ export const projects = [
     category: "Landing Pages",
   },
   {
-    img: "https://i.postimg.cc/Px6VK05W/uniconfort.png",
+    img: "https://i.postimg.cc/NftP7h7x/furn.png",
     name: "Uniconfort 🪑🛒",
     description: "Get The Most Comfortable Furniture with Uniconfort.",
     link: "https://new-uniconfort.vercel.app/",
